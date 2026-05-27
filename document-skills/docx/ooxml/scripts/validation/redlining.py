@@ -82,12 +82,13 @@ class RedliningValidator:
             # Parse both XML files using defusedxml.ElementTree for redlining validation
             try:
                 import defusedxml.ElementTree as ET
+                from defusedxml import DefusedXmlException
 
                 modified_tree = ET.parse(modified_file)
                 modified_root = modified_tree.getroot()
                 original_tree = ET.parse(original_file)
                 original_root = original_tree.getroot()
-            except ET.ParseError as e:
+            except (ET.ParseError, DefusedXmlException) as e:
                 print(f"FAILED - Error parsing XML files: {e}")
                 return False
 
