@@ -80,10 +80,10 @@ class RedliningValidator:
                 return False
 
             # Parse both XML files using defusedxml.ElementTree for redlining validation
-            try:
-                import defusedxml.ElementTree as ET
-                from defusedxml import DefusedXmlException
+            import defusedxml.ElementTree as ET
+            from defusedxml import DefusedXmlException
 
+            try:
                 modified_tree = ET.parse(modified_file)
                 modified_root = modified_tree.getroot()
                 original_tree = ET.parse(original_file)
